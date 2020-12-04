@@ -1,0 +1,27 @@
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+details {
+  display: none;
+}
+
+.info-emps {
+  display: none;
+}
+
+.prev-block {
+  display: none;
+}

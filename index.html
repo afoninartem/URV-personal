@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обработка УРВ</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="timesheet-block">
+      <div class="timesheet-block__info">
+        <details onclick="showDepartments()">
+          <summary>Загружено табелей: <span class="ts-quan"></span></summary>
+          <ul></ul>
+        </details>
+        <!-- <details class="info-timesheets">Загружено табелей: <span class="ts-quan"></span></details>
+        <p class="info-emps">Всего сотрудников: <span class="emps-quan"></span></p> -->
+      </div>
+      <form class="timesheet-block__input">
+        <input type="file" name="timesheet" id="timesheet" multiple>
+        <label for="timesheet">Загрузить все табели</label>
+      </form>
+    </div>
+
+    <div class="senesys-block">
+      <div class="senesys-block__info">
+        <div class="senesys-block__message">
+          <p></p>
+        </div>
+        <form action="" class="senesys-block__input">
+          <input type="file" name="senesys" id="senesys">
+          <label for="senesys">Загрузить данные из Senesys</label>
+        </form>
+      </div>
+    </div>
+
+    <div class="result-block">
+      <button class="result-btn">Результат</button>
+      <div class="prev-block">
+        <button class="download-btn">Скачать</button>
+        <div class="download-btn__preview"></div>
+      </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
