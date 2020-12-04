@@ -72,21 +72,28 @@ const isName = (str) => {
   return result;
 };
 
+const standartTime = (str) => {
+  const arr = str.split(":");
+  if (arr.length === 1) arr.push("00");
+  return arr.join(":");
+};
+
 const getOverJob = (obj) => {
-  const fullTime = {
-    src: obj.time.split(":"),
-  };
-  const normTime = {
-    src: obj.normHours.split(":"),
-  };
-
-  [(fullTime, normTime)].forEach((time) => {
-    if (time.src.length === 3) time.pop();
-    // time.mls = 
-  });
-  console.log(fullTime, normTime);
-
-  return "ведутся работы";
+  obj.time = standartTime(obj.time);
+  obj.normHours = standartTime(obj.normHours);
+  const realTime =
+    obj.time.split(":")[0] * 60 * 60 * 1000 +
+    obj.time.split(":")[1] * 60 * 1000;
+  const normTime =
+    obj.normHours.split(":")[0] * 60 * 60 * 1000 +
+    obj.normHours.split(":")[1] * 60 * 1000;
+  console.log(realTime, normTime);
+  let diff = Math.abs(realTime - normTime);
+  diff /= 1000;
+  const hours = Math.floor(diff / 3600);
+  const mins = Math.floor(diff % 3600);
+  const  overjob = `${hours}:${mins}`;
+  return overjob;
 };
 
 document.querySelector(".result-btn").addEventListener("click", () => {
@@ -110,7 +117,7 @@ document.querySelector(".result-btn").addEventListener("click", () => {
         `В Сенезисе нет такого сотрудника: ${emp}, ${timesheets[emp].department}`
       );
     }
-    csv += `${num};${emp};${timesheets[emp].position};${timesheets[emp].normDays};${timesheets[emp].normHours};;${timesheets[emp].time};;;;;;;;;;;`;
+    csv += `${num};${emp};${timesheets[emp].position};${timesheets[emp].normDays};${timesheets[emp].normHours};;${timesheets[emp].time};;;;;;${timesheets[emp].overjob};;;;;`;
     csv += "\n";
     num += 1;
   }
